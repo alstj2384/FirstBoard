@@ -2,7 +2,9 @@ package com.example.firstproject.controller;
 
 import com.example.firstproject.dto.ArticleForm;
 import com.example.firstproject.entity.Article;
+import com.example.firstproject.entity.Comment;
 import com.example.firstproject.repository.ArticleRepository;
+import com.example.firstproject.repository.CommentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,13 +24,20 @@ public class ArticleController {
 
     @Autowired
     private ArticleRepository articleRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     @GetMapping("/articles/{id}")
     public String show(@PathVariable Long id, Model model){
         log.info("id = " + id);
         // 1. id를 조회해 데이터 가져오기
         Article articleEntity = articleRepository.findById(id).orElse(null);
+
+        // 해당 게시글의 댓글 조회하여 가져오기
+        List<Comment> comments = commentRepository.findByArticleId(id);
+
         // 2. 모델에 데이터 등록하기
+        model.addAttribute("commentDtos", comments);
         model.addAttribute("article", articleEntity);
         // 3. 뷰 페이지 밚환하기
         return "articles/show";
