@@ -37,7 +37,7 @@
             body : JSON.stringify(comment)
         }).then(response => {
             // response는 응답을 보내고 받은 객체
-            const msg = (response.ok) ? "댓글이 등록됐습니다" : "댓글 등록 실패!";
+            const msg = (response.ok) ? "댓글이 등록 됐습니다" : "댓글 등록 실패!";
             alert(msg);
             // 현재 페이지 새로고침
             window.location.reload();
