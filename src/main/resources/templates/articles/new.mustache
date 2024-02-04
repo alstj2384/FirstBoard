@@ -1,0 +1,15 @@
+{{>layouts/header}}
+
+<form class = "container" action = "/articles/create" method = "post" >
+    <div class = "mb-3">
+        <label class="form-label">제목</label>
+        <input type="text" class="form-control" name = "title">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+        <textarea rows="3" class="form-control" name = "content"></textarea>
+    </div>
+    <button class="btn btn-primary" type = "submit">Submit</button>
+    <a href="/articles">Back</a>
+</form>
+{{>layouts/footer}}

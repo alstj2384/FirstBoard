@@ -1,0 +1,18 @@
+{{>layouts/header}}
+
+{{#member}}
+<form class = "container" action = "/members/update" method = "post" >
+    <div class = "mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="text" class="form-control" value = "{{email}}" name = "email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">비밀번호</label>
+        <textarea rows="3" class="form-control" name = "password">{{password}}</textarea>
+    </div>
+    <input type="hidden", name = "id", value="{{id}}">
+    <button class="btn btn-primary" type = "submit">Submit</button>
+    <a href="/members/{{id}}">Back</a>
+</form>
+{{/member}}
+{{>layouts/footer}}
