@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FirstController {
 
-    @GetMapping("/hi")
+    @GetMapping("/")
     public String niceToMeetYou(Model model){
         model.addAttribute("username", "민서");
-        return "greetings"; // 템플릿 파일의 이
+        return "index.html"; // 템플릿 파일의 이
     }
 
     @GetMapping("/bye")
